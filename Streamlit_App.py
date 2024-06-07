@@ -6,10 +6,13 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk import word_tokenize
 
-import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
+# Ensure necessary NLTK data is downloaded
+nltk_packages = ['stopwords', 'punkt', 'wordnet']
+for package in nltk_packages:
+    try:
+        nltk.data.find(f'tokenizers/{package}')
+    except LookupError:
+        nltk.download(package)
 
 
 # Load the saved XGBoost model
