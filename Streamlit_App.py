@@ -6,6 +6,12 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk import word_tokenize
 
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
+
+
 # Load the saved XGBoost model
 with open('xgb_model.pkl', 'rb') as model_file:
     xgb_classifier = pickle.load(model_file)
