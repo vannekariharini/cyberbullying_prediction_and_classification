@@ -7,10 +7,15 @@ from nltk.stem import WordNetLemmatizer
 from nltk import word_tokenize
 
 # Ensure necessary NLTK data is downloaded
-nltk_packages = ['stopwords', 'punkt', 'wordnet']
-for package in nltk_packages:
+nltk_packages = {
+    'stopwords': 'corpora/stopwords',
+    'punkt': 'tokenizers/punkt',
+    'wordnet': 'corpora/wordnet'
+}
+
+for package, path in nltk_packages.items():
     try:
-        nltk.data.find(f'tokenizers/{package}')
+        nltk.data.find(path)
     except LookupError:
         nltk.download(package)
 
